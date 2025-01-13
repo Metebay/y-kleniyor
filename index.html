@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yakında Buradayız</title>
+    <title>Yapım Aşamasında</title>
     <style>
         body {
             margin: 0;
@@ -14,36 +14,80 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #4a90e2, #50e3c2);
+            color: #fff;
             text-align: center;
+            overflow: hidden;
         }
 
         h1 {
             font-size: 3rem;
-            color: #333;
-            margin: 0;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out infinite alternate;
+        }
+
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .loader span {
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: bounce 1.5s infinite;
+        }
+
+        .loader span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .loader span:nth-child(3) {
+            animation-delay: 0.6s;
         }
 
         p {
             font-size: 1.2rem;
-            color: #777;
-            margin-top: 20px;
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.5;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         footer {
-            position: absolute;
-            bottom: 20px;
             font-size: 0.9rem;
-            color: #555;
+            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body>
-    <h1>Yakında Buradayız</h1>
-    <p>Bu sayfa Bayındır Medya Yönetimindedir.</p>
-
-    <footer>
-        &copy; 2025 Bayındır Medya
-    </footer>
+    <h1>Yapım Aşamasında</h1>
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <p>Bu site Bayındır Medya tarafından tasarlanmaktadır.</p>
+    <footer>&copy; 2025 Bayındır Medya</footer>
 </body>
 </html>

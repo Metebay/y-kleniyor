@@ -17,7 +17,9 @@
             background-color: var(--brand-dark);
             color: #f8fafc;
             margin: 0;
-            overflow: hidden;
+            /* Mobilde içeriğin kaybolmaması için overflow ayarlandı */
+            overflow-x: hidden;
+            overflow-y: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -48,12 +50,15 @@
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            min-width: 140px;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .stat-card::before {
@@ -73,20 +78,21 @@
         }
 
         .number-glow {
-            font-size: 4rem;
+            font-size: 3rem; /* Mobilde daha dengeli */
             font-weight: 800;
             letter-spacing: -0.02em;
             background: linear-gradient(to bottom, #fff 40%, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            line-height: 1;
         }
 
         .label-tech {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.2em;
             color: var(--brand-blue);
             margin-top: 0.5rem;
         }
@@ -104,10 +110,10 @@
             z-index: 20;
         }
 
-        @media (max-width: 768px) {
-            .stat-card { min-width: 100px; padding: 1.25rem; }
-            .number-glow { font-size: 2.5rem; }
-            .label-tech { font-size: 0.6rem; }
+        @media (min-width: 768px) {
+            .stat-card { padding: 2.5rem; min-width: 150px; }
+            .number-glow { font-size: 5rem; }
+            .label-tech { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -116,25 +122,25 @@
     <div class="grid-overlay"></div>
     <div class="scan-line"></div>
 
-    <div class="relative z-10 w-full max-w-6xl px-6 py-12 flex flex-col items-center text-center">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-widest mb-10 animate-pulse">
-            <span class="w-2 h-2 rounded-full bg-sky-500"></span>
-            Yenileniyor...
+    <div class="relative z-10 w-full max-w-5xl px-4 py-10 md:py-20 flex flex-col items-center text-center">
+        <!-- Rozet -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-8 animate-pulse">
+            <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-sky-500"></span>
+            Sistem Güncellemesi Devam Ediyor
         </div>
 
-        <!-- Logo / Title -->
-        <div class="mb-12">
-            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 text-white">
+        <!-- Başlık Bölümü -->
+        <div class="mb-10 md:mb-16">
+            <h1 class="text-4xl sm:text-5xl md:text-8xl font-extrabold tracking-tighter mb-4 text-white leading-tight">
                 Gazişehir<span class="text-sky-500">Medikal</span>
             </h1>
-            <p class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto font-light leading-relaxed">
-                Yenilenen <span class="text-white font-normal underline decoration-sky-500 underline-offset-8">dijital yüzümüz</span> ile çok yakında sizlerle olacağız.
+            <p class="text-slate-400 text-sm md:text-xl max-w-2xl mx-auto font-light leading-relaxed px-4">
+                Yenilenen <span class="text-white font-normal underline decoration-sky-500 underline-offset-4 md:underline-offset-8">dijital yüzümüz</span> ile çok yakında sizlerle olacağız.
             </p>
         </div>
 
-        <!-- Countdown -->
-        <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-20">
+        <!-- Geri Sayım - Mobilde 2x2, Masaüstünde Yan Yana -->
+        <div class="grid grid-cols-2 md:flex md:flex-row justify-center gap-3 md:gap-8 mb-16 md:mb-24 w-full max-w-sm md:max-w-none">
             <div class="stat-card">
                 <div id="days" class="number-glow">00</div>
                 <div class="label-tech">Gün</div>
@@ -153,24 +159,24 @@
             </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="w-full pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate-500">
-            <div>
+        <!-- Alt Bilgi -->
+        <footer class="w-full pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] md:text-sm text-slate-500 mt-auto">
+            <div class="order-2 md:order-1">
                 &copy; 2026 <span class="text-slate-300">Gazişehir Medikal</span>. Tüm hakları saklıdır.
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 order-1 md:order-2">
                 <span>Dijital Çözüm Ortağı</span>
-                <div class="h-4 w-px bg-slate-800"></div>
+                <div class="h-3 w-px bg-slate-800"></div>
                 <a href="https://bayindirdijital.com.tr" target="_blank" class="text-sky-500 font-bold hover:text-sky-400 transition-all flex items-center gap-1">
                     Bayındır Medya
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="md:w-[14px] md:h-[14px]"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
             </div>
         </footer>
     </div>
 
     <script>
-        // Hedef: 20 Mart 2026
+        // Hedef Tarih
         const countdownDate = new Date("March 20, 2026 00:00:00").getTime();
 
         const updateTimer = () => {
@@ -178,7 +184,7 @@
             const diff = countdownDate - now;
 
             if (diff < 0) {
-                document.getElementById("days").innerText = "00";
+                document.querySelectorAll(".number-glow").forEach(el => el.innerText = "00");
                 return;
             }
 
